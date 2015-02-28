@@ -13,17 +13,14 @@ if (Meteor.isServer) {
   app.use(bodyParser.urlencoded({ extended: true }));
 
   app.post('/', function (req, res) {
-    var text = req.body//.Body.trim().toLowerCase();
-    console.log(text);
-    /*
-    if(text=="hello"){
-      var xml = '<Response><Sms>What would you like to study?</Sms></Response>';
-    }else {
-      var xml ='<Response><Sms>What?</Sms></Response>';
+    var from = req.body.From;
+    var text = req.body.Body.trim().toLowerCase();
+    if(MessageData.findOne({from: from})==null){
+      MessageData.insert({from: from, counter: 0});
     }
-    */
-    //res.type('text/xml');
-    //res.send(xml);
+    var xml = flow(from, text);
+    res.type('text/xml');
+    res.send(xml);
   });
 
   var server = app.listen(8000, function () {
@@ -48,4 +45,23 @@ if (Meteor.isServer) {
       });
     }
   });
+
+  function flow(from, text){
+    var xml = '';
+    var user = MessageData.findOne({from: from});
+    var counter = user.counter;
+    console.log(counter);
+    if(counter==0){
+      if(text=="hello"){
+        xml = '<Response><Sms>What would you like to study?</Sms></Response>';
+        MessageData.update({_id: user._id}, {$inc: {counter: 1}});
+      }else {
+        xml ='<Response><Sms>What?</Sms></Response>';
+      }
+    }else if(counter==1){
+      xml = '<Response><Sms>What is your zipcode?</Sms></Response>';
+      MessageData.update({_id: user._id}, {$inc: {counter: 1}});
+    }
+    return xml;
+  }
 }
