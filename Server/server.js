@@ -55,15 +55,18 @@ if (Meteor.isServer) {
       console.log(counter);
       if(counter==0){
         if(text=="hello"){
-          //ehh
           xml = '<Response><Sms>What would you like to study?</Sms></Response>';
           MessageData.update({_id: user._id}, {$inc: {counter: 1}});
         }else {
-          xml ='<Response><Sms>What?</Sms></Response>';
+          xml = '<Response><Sms>What?</Sms></Response>';
         }
       }else if(counter==1){
+        MessageData.update({_id: user._id}, {subject: text}});
         xml = '<Response><Sms>What is your zipcode?</Sms></Response>';
         MessageData.update({_id: user._id}, {$inc: {counter: 1}});
+      }else if(counter==2){
+        MessageData.update({_id: user._id}, {zip: text}});
+        xml = '<Response><Sms>Thank you, we will now match you to a study group.</Sms></Response>';
       }
       res.type('text/xml');
       res.send(xml);
