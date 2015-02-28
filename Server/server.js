@@ -18,7 +18,7 @@ if (Meteor.isServer) {
     if(MessageData.findOne({from: from})==null){
       MessageData.insert({from: from, counter: 0});
     }
-    var xml = flow(from, text);
+    //var xml = flow(from, text);
     res.type('text/xml');
     res.send(xml);
   });
