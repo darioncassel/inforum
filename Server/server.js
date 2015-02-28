@@ -20,7 +20,7 @@ if (Meteor.isServer) {
         MessageData.insert({from: from, counter: 0});
       //}
     }).run();
-    flow(from, text);
+    flow(from, text, res);
   });
 
   var server = app.listen(8000, function () {
@@ -49,7 +49,7 @@ if (Meteor.isServer) {
     }
   });
 
-  function flow(from, text){
+  function flow(from, text, res){
     Fiber(function(){
       var xml = '<Response><Sms>Test</Sms></Response>';
       var user = MessageData.findOne({from: from})
