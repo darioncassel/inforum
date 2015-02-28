@@ -50,9 +50,8 @@ if (Meteor.isServer) {
 
   function flow(from, text){
     var xml = '';
-    var user = Fiber(function(){
-      MessageData.findOne({from: from})
-    }).run();
+    Fiber(function(){
+    var user = MessageData.findOne({from: from})
     var counter = user.counter;
     console.log(counter);
     if(counter==0){
@@ -66,6 +65,7 @@ if (Meteor.isServer) {
       xml = '<Response><Sms>What is your zipcode?</Sms></Response>';
       MessageData.update({_id: user._id}, {$inc: {counter: 1}});
     }
+    }).run();
     return xml;
   }
 }
