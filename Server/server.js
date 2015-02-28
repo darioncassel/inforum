@@ -50,7 +50,9 @@ if (Meteor.isServer) {
 
   function flow(from, text){
     var xml = '';
-    var user = MessageData.findOne({from: from});
+    var user = Fiber(function(){
+      MessageData.findOne({from: from})
+    }).run();
     var counter = user.counter;
     console.log(counter);
     if(counter==0){
