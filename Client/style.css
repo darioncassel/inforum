@@ -20,3 +20,10 @@ body {
 .jumbotron > h2 {
   font-size: 5em;
 }
+
+#notesdata {
+	text-align: center;
+	color: blue;
+
+}
+
