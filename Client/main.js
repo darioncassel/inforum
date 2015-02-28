@@ -11,7 +11,7 @@ Router.route('/:id', function() {
 if (Meteor.isClient) {
   Template.main.events({
     'click button[name=test]': function() {
-        Meteor.call("sendSMS");
+        Meteor.call("sendSMS", $('#number').val());
     }
   });
 }
