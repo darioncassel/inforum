@@ -9,6 +9,7 @@ if (Meteor.isServer) {
   var express = Meteor.npmRequire('express');
   var app = express();
   app.post('/query', function(req, res) {
+    console.log("here");
     if (twilio.validateExpressRequest(req, authToken)) {
         var twiml = new twilio.TwimlResponse();
         twiml.sms('Hi!  Thanks for checking out my app!')
