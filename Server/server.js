@@ -10,11 +10,15 @@ if (Meteor.isServer) {
   var app = express();
   var bodyParser = Meteor.npmRequire('body-parser');
   app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: true })); 
+  app.use(bodyParser.urlencoded({ extended: true }));
 
   app.post('/', function (req, res) {
-    console.log(req.body.Body);
-    var xml = '<Response><Sms>Thank you for submitting your question!</Sms></Response>';
+    var text = req.body.Body;
+    if(text=="HELLO"){
+      var xml = '<Response><Sms>What would you like to study?</Sms></Response>';
+    }else {
+      var xml ='<Response><Sms>What?</Sms></Response>';
+    }
     res.type('text/xml');
     res.send(xml);
   });
