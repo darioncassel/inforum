@@ -20,10 +20,7 @@ if (Meteor.isServer) {
         MessageData.insert({from: from, counter: 0});
       //}
     }).run();
-    var xml = flow(from, text);
-    console.log(xml);
-    res.type('text/xml');
-    res.send(xml);
+    flow(from, text);
   });
 
   var server = app.listen(8000, function () {
@@ -70,7 +67,8 @@ if (Meteor.isServer) {
         xml = '<Response><Sms>What is your zipcode?</Sms></Response>';
         MessageData.update({_id: user._id}, {$inc: {counter: 1}});
       }
-      return xml;
+      res.type('text/xml');
+      res.send(xml);
     }).run();
   }
 }
