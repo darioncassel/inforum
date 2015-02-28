@@ -15,9 +15,11 @@ if (Meteor.isServer) {
   app.post('/', function (req, res) {
     var from = req.body.From;
     var text = req.body.Body.trim().toLowerCase();
-    if(MessageData.findOne({from: from})==null){
-      MessageData.insert({from: from, counter: 0});
-    }
+    Fiber(function(){
+      if(MessageData.findOne({from: from})==null){
+        MessageData.insert({from: from, counter: 0});
+      }
+    }).run();
     //var xml = flow(from, text);
     res.type('text/xml');
     res.send(xml);
