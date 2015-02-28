@@ -8,3 +8,7 @@ meteor-platform
 twbs:bootstrap
 accolver:twilio-meteor
 iron:router
+meteorhacks:npm
+
+
+npm-container
