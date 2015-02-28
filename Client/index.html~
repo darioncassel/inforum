@@ -11,7 +11,7 @@
 
 <template name="ApplicationLayout">
   <div class="jumbotron">
-    <h1>inforum</h1>
+    <h1>inforum!!!!</h1>
   </div>
   <article>
     <div class="container">
@@ -25,7 +25,7 @@
 <template name="main">
   <div class="row-fluid marketing">
 		<div class="span12" id="notesdata">
-			  <p>Text this number and find someone who wants to study. It's that simple.</p>
+			  <p>Hello, World</p>
 		</div>
 	</div>
 </template>

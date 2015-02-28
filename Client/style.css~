@@ -26,7 +26,6 @@ body {
 }
 
 #notesdata {
-	text-align: center;
 	color: blue;
 
 }
