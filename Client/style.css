@@ -19,11 +19,12 @@ body {
 
 .jumbotron > h2 {
   font-size: 5em;
+  font-family:'Rockwell', bold, cursive;
 }
 
-#notesdata {
+.span12 {
 	text-align: center;
-	color: blue;
-
+	font-size: 2em;
+	font-family:'Rockwell', cursive;
 }
 
