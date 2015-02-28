@@ -13,14 +13,17 @@ if (Meteor.isServer) {
   app.use(bodyParser.urlencoded({ extended: true }));
 
   app.post('/', function (req, res) {
-    var text = req.body.Body.trim().toLowerCase();
+    var text = req.body//.Body.trim().toLowerCase();
+    console.log(text);
+    /*
     if(text=="hello"){
       var xml = '<Response><Sms>What would you like to study?</Sms></Response>';
     }else {
       var xml ='<Response><Sms>What?</Sms></Response>';
     }
-    res.type('text/xml');
-    res.send(xml);
+    */
+    //res.type('text/xml');
+    //res.send(xml);
   });
 
   var server = app.listen(8000, function () {
