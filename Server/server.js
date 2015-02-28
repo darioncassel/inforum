@@ -47,10 +47,8 @@ if (Meteor.isServer) {
   function flow(from, text, res){
     Fiber(function(){
       if(MessageData.findOne({from: from})==undefined){
-        console.log('here1');
         MessageData.insert({from: from, counter: 0});
       }
-      console.log('here2');
       var xml = '<Response><Sms>Test</Sms></Response>';
       var user = MessageData.findOne({from: from})
       var counter = user.counter;
