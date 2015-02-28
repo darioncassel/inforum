@@ -46,6 +46,9 @@ if (Meteor.isServer) {
           console.log(err);
         }
       });
+    },
+    'clearDB': function() {
+      MessageData.remove({});
     }
   });
 
