@@ -21,8 +21,8 @@ if (Meteor.isServer) {
       }
     }).run();
     //var xml = flow(from, text);
-    res.type('text/xml');
-    res.send(xml);
+    //res.type('text/xml');
+    //res.send(xml);
   });
 
   var server = app.listen(8000, function () {
