@@ -19,6 +19,7 @@ if (Meteor.isServer) {
         res.send('you are not twilio. Buzz off.');
     }
   });
+  //Here
   app.listen(process.env.PORT || 3000);
 
   Meteor.methods({
