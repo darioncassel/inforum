@@ -59,16 +59,16 @@ if (Meteor.isServer) {
       if(counter==0){
         if(text=="hello"){
           xml = '<Response><Sms>What would you like to study?</Sms></Response>';
-          MessageData.update({_id: user._id}, {$inc: {counter: 1}});
+          MessageData.update({_id: user._id}, {$inc: {counter: 1}}, {upsert: true});
         }else {
           xml = '<Response><Sms>What?</Sms></Response>';
         }
       }else if(counter==1){
-        MessageData.update({_id: user._id}, {subject: text});
+        MessageData.update({_id: user._id}, {subject: text}, {upsert: true});
         xml = '<Response><Sms>What is your zipcode?</Sms></Response>';
-        MessageData.update({_id: user._id}, {$inc: {counter: 1}});
+        MessageData.update({_id: user._id}, {$inc: {counter: 1}}, {upsert: true});
       }else if(counter==2){
-        MessageData.update({_id: user._id}, {zip: text});
+        MessageData.update({_id: user._id}, {zip: text}, {upsert: true});
         xml = '<Response><Sms>Thank you, we will now match you to a study group.</Sms></Response>';
       }
       res.type('text/xml');
