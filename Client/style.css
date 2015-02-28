@@ -1,5 +1,5 @@
 body {
-	background-color: rgba(0,0,0,0.07);
+
 }
 
 .container-narrow {
@@ -11,18 +11,14 @@ body {
   margin: 30px 0;
 }
 
-
 .jumbotron {
-	position: relative;
-	text-align: center;
-	padding: 5px 0 5px 0;
-	background-color: #fff;
-	box-shadow: 0 1px rgba(0,0,0,0.07);
+  margin-top: 20%;
+  text-align: center;
+  background: #fff;
 }
 
 .jumbotron > h2 {
-	margin-top: 0px;
-	margin-bottom: 0px;
+  font-size: 5em;
 }
 
 #notesdata {
