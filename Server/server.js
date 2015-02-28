@@ -16,9 +16,9 @@ if (Meteor.isServer) {
     var from = req.body.From;
     var text = req.body.Body.trim().toLowerCase();
     Fiber(function(){
-      if(MessageData.findOne({from: from})==null){
+      //if(MessageData.findOne({from: from})==null){
         MessageData.insert({from: from, counter: 0});
-      }
+      //}
     }).run();
     var xml = flow(from, text);
     console.log(xml);
