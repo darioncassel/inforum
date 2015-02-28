@@ -65,7 +65,7 @@ if (Meteor.isServer) {
         xml = '<Response><Sms>What is your zipcode?</Sms></Response>';
         MessageData.update({_id: user._id}, {$inc: {counter: 1}});
       }else if(counter==2){
-        MessageData.update({_id: user._id}, {zip: text}});
+        MessageData.update({_id: user._id}, {zip: text});
         xml = '<Response><Sms>Thank you, we will now match you to a study group.</Sms></Response>';
       }
       res.type('text/xml');
