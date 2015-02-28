@@ -60,6 +60,7 @@ if (Meteor.isServer) {
       console.log(counter);
       if(counter==0){
         if(text=="hello"){
+          console.log('here');
           xml = '<Response><Sms>What would you like to study?</Sms></Response>';
           MessageData.update({_id: user._id}, {$inc: {counter: 1}});
         }else {
