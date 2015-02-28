@@ -26,7 +26,12 @@
   <div class="row-fluid marketing">
 		<div class="span12" id="phoneNumber">
 			  <p>(XXX)-XXX-XXXX</p>
-
+<<<<<<< HEAD
+=======
+		</div>
+		<div class="span12" id="notesData">
+			  <p>Text this number and find someone who wants to study. It's that simple.</p>
+>>>>>>> 597f742c6a1b7e6592c910a4a27527d6bef17c4d
 		</div>
 		<div class="span12" id="explanation">
 			  <p>Text <span style="color: blue"><i>"HELLO"</i></span> to this number and find someone who wants to study. It's that simple.</p>
