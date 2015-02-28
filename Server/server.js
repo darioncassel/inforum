@@ -8,33 +8,18 @@ if (Meteor.isServer) {
 
   var express = Meteor.npmRequire('express');
   var app = express();
-  /*
-  app.post('/query', function(req, res) {
-    console.log("here");
-    if (twilio.validateExpressRequest(req, authToken)) {
-        var twiml = new twilio.TwimlResponse();
-        twiml.sms('Hi!  Thanks for checking out my app!')
-        res.type('text/xml');
-        res.send(twiml.toString());
-    }
-    else {
-        res.send('you are not twilio. Buzz off.');
-    }
-  });
-  //Here
-  app.set('port',process.env.PORT || 8000);
-  */
 
   app.post('/', function (req, res) {
+    console.log(req);
     var xml = '<Response><Sms>Thank you for submitting your question!</Sms></Response>';
     res.type('text/xml');
     res.send(xml);
   });
 
   var server = app.listen(8000, function () {
-    var host = server.address().address
-    var port = server.address().port
-    console.log('Example app listening at http://%s:%s', host, port)
+    var host = server.address().address;
+    var port = server.address().port;
+    console.log('Example app listening at http://%s:%s', host, port);
   });
 
   Meteor.methods({
