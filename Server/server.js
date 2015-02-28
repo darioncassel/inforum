@@ -26,7 +26,10 @@ if (Meteor.isServer) {
   */
 
   app.post('/', function (req, res) {
-    res.send('Hello World!')
+    var twiml = new twilio.TwimlResponse();
+    twiml.sms('Hi!  Thanks for checking out my app!')
+    res.type('text/xml');
+    res.send(twiml.toString());
   });
 
   var server = app.listen(8000, function () {
