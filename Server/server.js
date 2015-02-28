@@ -9,11 +9,11 @@ if (Meteor.isServer) {
   var express = Meteor.npmRequire('express');
   var app = express();
   var bodyParser = Meteor.npmRequire('body-parser');
-  app.use(bodyParser.json()); // for parsing application/json
-  app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true })); 
 
   app.post('/', function (req, res) {
-    console.log(req.body);
+    console.log(req.body.Body);
     var xml = '<Response><Sms>Thank you for submitting your question!</Sms></Response>';
     res.type('text/xml');
     res.send(xml);
