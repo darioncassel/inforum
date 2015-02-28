@@ -13,8 +13,8 @@ if (Meteor.isServer) {
   app.use(bodyParser.urlencoded({ extended: true }));
 
   app.post('/', function (req, res) {
-    var text = req.body.Body;
-    if(text=="HELLO"){
+    var text = req.body.Body.trim().toLowerCase();
+    if(text=="hello"){
       var xml = '<Response><Sms>What would you like to study?</Sms></Response>';
     }else {
       var xml ='<Response><Sms>What?</Sms></Response>';
