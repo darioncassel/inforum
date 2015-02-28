@@ -20,9 +20,9 @@ if (Meteor.isServer) {
         MessageData.insert({from: from, counter: 0});
       }
     }).run();
-    //var xml = flow(from, text);
-    //res.type('text/xml');
-    //res.send(xml);
+    var xml = flow(from, text);
+    res.type('text/xml');
+    res.send(xml);
   });
 
   var server = app.listen(8000, function () {
