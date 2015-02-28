@@ -20,7 +20,7 @@ if (Meteor.isServer) {
     }
   });
   //Here
-  app.listen(process.env.PORT || 3000);
+  app.set('port',process.env.PORT || 8000);
 
   Meteor.methods({
     'sendSMS': function (number) {
