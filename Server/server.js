@@ -15,13 +15,6 @@ if (Meteor.isServer) {
   app.post('/', function (req, res) {
     var from = req.body.From;
     var text = req.body.Body.trim().toLowerCase();
-    Fiber(function(){
-      if(MessageData.findOne({from: from})==undefined){
-        console.log('here1');
-        MessageData.insert({from: from, counter: 0});
-      }
-      console.log('here2');
-    }).run();
     flow(from, text, res);
   });
 
@@ -53,6 +46,11 @@ if (Meteor.isServer) {
 
   function flow(from, text, res){
     Fiber(function(){
+      if(MessageData.findOne({from: from})==undefined){
+        console.log('here1');
+        MessageData.insert({from: from, counter: 0});
+      }
+      console.log('here2');
       var xml = '<Response><Sms>Test</Sms></Response>';
       var user = MessageData.findOne({from: from})
       var counter = user.counter;
