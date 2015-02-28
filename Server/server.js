@@ -61,7 +61,7 @@ if (Meteor.isServer) {
           xml = '<Response><Sms>What?</Sms></Response>';
         }
       }else if(counter==1){
-        MessageData.update({_id: user._id}, {subject: text}});
+        MessageData.update({_id: user._id}, {subject: text});
         xml = '<Response><Sms>What is your zipcode?</Sms></Response>';
         MessageData.update({_id: user._id}, {$inc: {counter: 1}});
       }else if(counter==2){
