@@ -8,7 +8,8 @@ if (Meteor.isServer) {
 
   var express = Meteor.npmRequire('express');
   var app = express();
-
+  app.use(express.urlencoded());
+  
   app.post('/', function (req, res) {
     console.log(req.body);
     var xml = '<Response><Sms>Thank you for submitting your question!</Sms></Response>';
