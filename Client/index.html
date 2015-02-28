@@ -1,0 +1,31 @@
+<!--@DarionCassel-->
+<head>
+  <title>inforum</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' www.google-analytics.com ajax.googleapis.com;">
+  <link rel="icon" href="/img/favicon.png?v=2"/>
+</head>
+
+<body>
+</body>
+
+<template name="ApplicationLayout">
+  <div class="jumbotron">
+    <h2>inforum</h2>
+  </div>
+  <article>
+    <div class="container">
+      <div class="container-narrow">
+        {{> yield}}
+      </div>
+    </div>
+  </article>
+</template>
+
+<template name="main">
+  <div class="row-fluid marketing">
+		<div class="span12" id="notesdata">
+			  <p>Hello, World</p>
+		</div>
+	</div>
+</template>
