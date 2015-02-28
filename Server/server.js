@@ -25,7 +25,7 @@ if (Meteor.isServer) {
   app.set('port',process.env.PORT || 8000);
   */
 
-  app.get('/', function (req, res) {
+  app.post('/', function (req, res) {
     res.send('Hello World!')
   });
 
@@ -34,7 +34,7 @@ if (Meteor.isServer) {
     var port = server.address().port
     console.log('Example app listening at http://%s:%s', host, port)
   });
-  
+
   Meteor.methods({
     'sendSMS': function (number) {
       twilio.sendSms({
