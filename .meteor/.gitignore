@@ -1,1 +1,7 @@
 local
+*.html~
+*.js~
+*.html~~
+*.js~~
+*.cs~
+*.cs~~
