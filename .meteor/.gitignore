@@ -3,3 +3,5 @@ local
 *.js~
 *.html~~
 *.js~~
+*.cs~
+*.cs~~
