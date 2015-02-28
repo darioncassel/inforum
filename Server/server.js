@@ -10,7 +10,7 @@ if (Meteor.isServer) {
   var app = express();
 
   app.post('/', function (req, res) {
-    console.log(req);
+    console.log(req.body);
     var xml = '<Response><Sms>Thank you for submitting your question!</Sms></Response>';
     res.type('text/xml');
     res.send(xml);
