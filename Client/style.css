@@ -12,7 +12,7 @@ body {
 }
 
 .jumbotron {
-  margin-top: 20%;
+  margin-top: 15%;
   text-align: center;
   background: #fff;
 }
@@ -22,18 +22,19 @@ body {
   font-family:'Rockwell', bold, cursive;
 }
 
-#notesData {
+#explanation {
 	text-align: center;
 	font-size: 2em;
 	font-family:'Rockwell', cursive;
 }
 
 #phoneNumber {
-	margin-bottom: 10%;
+	margin-bottom: 5%;
 	text-align: center;
-	font-size: 3em;
+	font-size: 3.5em;
 	font-family:'Rockwell', cursive;
 	color: blue;
 }
+
 
 
