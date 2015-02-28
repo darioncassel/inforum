@@ -27,7 +27,8 @@ if (Meteor.isServer) {
 
   app.post('/', function (req, res) {
     var xml = '<Response><Sms>Thank you for submitting your question!</Sms></Response>';
-    return [200, {"Content-Type": "text/xml"}, xml];
+    res.type('text/xml');
+    res.send(xml);
   });
 
   var server = app.listen(8000, function () {
