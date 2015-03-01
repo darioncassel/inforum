@@ -87,7 +87,7 @@ if (Meteor.isServer) {
             }
           }).fetch()[0];
           var arr = thisGroup.people.push(from);
-          StudyGroups.update({_id: thisGroup._id}, {$set{people: arr}});
+          StudyGroups.update({_id: thisGroup._id}, {$set: {people: arr}});
         }
         xml = '<Response><Sms>Thank you, we will now match you to a study group.</Sms></Response>';
         MessageData.update({_id: user._id}, {$set: {counter: 0}}, {upsert: true});
