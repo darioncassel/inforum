@@ -50,13 +50,17 @@
 	color: #fff;
 	background-color: #95a5a6;
   font-size: 15px;
-	height: 30px;
+	height: 28px;
 	padding-top: 4px;
+  margin-bottom: 4px;
+  width: 29px;
+  padding-left: 2px;
 }
 
 #noteInput {
 	font-size: 1.2em;
 	line-height: 1.33;
+  width: 40%;
 }
 
 #notesdata {
@@ -66,12 +70,14 @@
 	right:0;
 	bottom:0;
 	left:0;
-	margin-top: 44px;
+	margin-top: 64px;
 	padding-top: 20px;
 	margin-bottom: 50px;
 	padding-left: 25px;
 	padding-right: 25px;
 	min-width: 350px;
+  margin-left: 20%;
+  margin-right: 20%;
 	z-index: -10;
 	overflow-y: scroll;
 	float: left;
@@ -120,7 +126,7 @@
 	text-align: center;
 	padding-top: -10px;
 	padding-bottom: 0px;
-	
+
 }
 #userName {
 	color:#bdc3c7;

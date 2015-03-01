@@ -18,3 +18,5 @@ accounts-facebook
 aldeed:geocoder
 reactive-var
 meteorhacks:search-source
+momentjs:moment
+mizzao:bootboxjs

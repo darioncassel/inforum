@@ -72,27 +72,28 @@
 		</div>
 	</div>
   <div class="footer">
-    <input type="text" maxlength="140" placeholder="Text Message" autofocus="autofocus" id="noteInput">
-      <button  id = "add" type = "button" class="btn btn-xs"><span class="glyphicon glyphicon-send"></span></button>
-	<button id = "return" type = "button">Find another</button>
-		    <button  id = "remove" type = "button" class="btn btn-xs"><span class="glyphicon glyphicon-remove"></span></button>
+  <input type="text" maxlength="140" placeholder="Text Message" autofocus="autofocus" id="noteInput">
+  <button  id = "add" type = "button" class="btn btn-xs"><span class="glyphicon glyphicon-send"></span></button>
+	<!--<button id = "return" type = "button">Find another</button>
+	<button  id = "remove" type = "button" class="btn btn-xs"><span class="glyphicon glyphicon-remove"></span></button>
+  -->
   </div>
 </template>
 
 
-<template name="note">	
+<template name="note">
 	<div class="row">
-				<div id = "userName">
-					<span>User Name</span>
-				</div>
-			<div class="col-md-12">
-				<div id = "userText">
-				<p><span class="noteText">      {{linkify text}}</span></p>
-				</div>
-			</div>
-			<div id = "userTime">
-					<span>Sent at (Time)</span>
-				</div>
+  	<div id = "userName">
+  		<span>{{name}}</span>
+  	</div>
+  <div class="col-md-12">
+  	<div id = "userText">
+  	<p><span class="noteText">      {{linkify text}}</span></p>
+  	</div>
+  </div>
+  <div id = "userTime">
+  	<span>Sent {{time}}</span>
+  </div>
 </div>
 </template>
 
