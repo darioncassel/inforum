@@ -91,7 +91,7 @@ if (Meteor.isServer) {
               }
             }
           }).fetch()[0];
-          if(thisGroup.length!=0){
+          if(thisGroup!=undefined){
             var arr = thisGroup.people.push(from);
             StudyGroups.update({_id: thisGroup._id}, {$set: {people: arr}});
           }else{
