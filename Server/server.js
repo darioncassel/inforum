@@ -137,7 +137,8 @@ if (Meteor.isServer) {
             }
           }).fetch()[0];
           if(thisGroup!=undefined){
-            var arr = thisGroup.people.push(from);
+            var arr = thisGroup.people;
+            arr.push(from);
             uuid = thisGroup.uuid;
             StudyGroups.update({_id: thisGroup._id}, {$set: {people: arr}});
           }else{
