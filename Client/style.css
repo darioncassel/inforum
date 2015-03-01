@@ -73,11 +73,9 @@
 	margin-top: 64px;
 	padding-top: 20px;
 	margin-bottom: 50px;
-	padding-left: 25px;
-	padding-right: 25px;
+  padding-left: 25%;
+	padding-right: 25%;
 	min-width: 350px;
-  margin-left: 20%;
-  margin-right: 20%;
 	z-index: -10;
 	overflow-y: scroll;
 	float: left;
