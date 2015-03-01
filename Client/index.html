@@ -115,6 +115,11 @@
 				  <input type="text" id="groupName" placeholder="add group">
 				  <button id="addGroup">+</button>
           <p id="myGroups">My Groups</p>
+          <div id="myGroups_list">
+            {{#each mygroups}}
+              {{> mygroup}}
+            {{/each}}
+          </div>
 			</div>
 		</div>
 	</div>
@@ -136,5 +141,11 @@
     <div class="col-md-3">
       <button id="{{id}}" class="joinGroup">Join</button>
     </div>
+  </div>
+</template>
+
+<template name="mygroup">
+  <div class="mygroup_box">
+    <a href="http://52.0.162.200:3000/chat/{{id}}/">{{name}}</a>
   </div>
 </template>
