@@ -71,7 +71,7 @@ if (Meteor.isServer) {
       }else if(counter==2){
         MessageData.update({_id: user._id}, {$set: {zip: text}}, {upsert: true});
         var zip = Zipcodes.lookup(parseInt(text));
-        if(StudyGroups.findOne({group: {subject: subject}})==undefined){
+        if(StudyGroups.findOne({group: {subject: user.subject}})==undefined){
           var group = {
             subject: user.subject,
             people: [from],
