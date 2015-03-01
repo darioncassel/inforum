@@ -18,13 +18,53 @@ Router.route('/chat/:id', function() {
 });
 
 NotesData = new Mongo.Collection("notes");
+UserData = new Mongo.Collection("users_client");
+GroupsData = new Mongo.Collection("groups_client");
 
 if (Meteor.isClient) {
+
+  Meteor.subscribe('usersData');
+  Meteor.subscribe('groups_fb');
+
+  Accounts.ui.config({
+    requestPermissions: {
+      facebook: [
+        'user_friends',
+        'public_profile'
+      ],
+    }
+  });
+
+  Template.groups.helpers({
+    'link': function() {
+      if(Meteor.user().services.facebook){
+        return "http://graph.facebook.com/" + Meteor.user().services.facebook.id + "/picture/?type=large";
+      }
+    },
+    'name': function() {
+      if(Meteor.user().services.facebook){
+        return Meteor.user().profile.name;
+      }
+    },
+    'groups': function() {
+      return GroupsData.find().fetch().reverse();
+    }
+  });
+
+  Template.groups.events({
+    'click #addGroup': function () {
+      var name = $('#groupName').val();
+      var group = {
+        name: name
+      }
+      Meteor.call('addgroup', group);
+    }
+  })
+
   Template.main.events({
     'click .login-button': function () {
       Meteor.setTimeout(function() {
         if(Meteor.user()){
-          console.log('here');
           window.location="groups";
         }
       }, 2000);

@@ -1,6 +1,8 @@
 MessageData = new Mongo.Collection('messages');
 StudyGroups = new Mongo.Collection('groups');
 NotesData = new Mongo.Collection('notes_room');
+UserData = new Mongo.Collection('users_server');
+GroupsData = new Mongo.Collection('groups_server');
 
 if (Meteor.isServer) {
   var Fiber = Npm.require('fibers');
@@ -24,6 +26,14 @@ if (Meteor.isServer) {
     var host = server.address().address;
     var port = server.address().port;
     console.log('Example app listening at http://%s:%s', host, port);
+  });
+
+  Meteor.publish('usersData', function() {
+    return Meteor.users.find();
+  });
+
+  Meteor.publish('groups_fb', function(){
+    return GroupsData.find();
   });
 
   Meteor.methods({
@@ -61,6 +71,9 @@ if (Meteor.isServer) {
     },
     removeAllNotes: function() {
       NotesData.remove({});
+    },
+    addgroup: function(group) {
+      GroupsData.insert(group);
     }
   });
 
@@ -86,8 +99,9 @@ if (Meteor.isServer) {
         MessageData.update({_id: user._id}, {$inc: {counter: 1}}, {upsert: true});
       }else if(counter==2){
         MessageData.update({_id: user._id}, {$set: {zip: text}}, {upsert: true});
-        var zip = Zipcodes.lookup(parseInt(text));
-        var loc = [zip.longitude, zip.latitude];
+        var geo = new GeoCoder();
+        var result = geo.geocode(parseInt(text));
+        var loc = [result[0].longitude, result[0].latitude];
         if(StudyGroups.findOne({subject: user.subject})==undefined){
           var group = {
             subject: user.subject,

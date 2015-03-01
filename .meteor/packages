@@ -12,7 +12,7 @@ meteorhacks:npm
 
 
 npm-container
-mrt:zipcodes
 copleykj:autolinker
 accounts-ui
 accounts-facebook
+aldeed:geocoder
