@@ -83,12 +83,21 @@ if (Meteor.isClient) {
       }, 2000);
     }
   });
+
+  Template.chat.rendered = function() {
+    bootbox.prompt("What is your name?", function(result) {
+      Session.set('username', result);
+    });
+  }
+
   Template.chat.events({
 		'click #add' : function () {
 			if(!$('#noteInput').val().match(/^\s*$/)){
 				var note = {
+            name: Session.get('username'),
             room: window.location.pathname.slice(6),
-						text: $('#noteInput').val()
+						text: $('#noteInput').val(),
+            time: moment().format('MMMM Do, h:mm:ss a')
 				};
 				Meteor.call('addNote', note);
 			}
@@ -99,8 +108,10 @@ if (Meteor.isClient) {
 			if(event.which===13){
 				if(!$('#noteInput').val().match(/^\s*$/)){
 					var note = {
+            name: Session.get('username'),
             room: window.location.pathname.slice(6),
-						text: $('#noteInput').val()
+						text: $('#noteInput').val(),
+            time: moment().format('MMMM Do, h:mm:ss a')
 					};
 					Meteor.call('addNote', note);
 				}
