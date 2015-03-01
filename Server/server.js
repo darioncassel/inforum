@@ -1,4 +1,5 @@
 MessageData = new Mongo.Collection('messages');
+StudyGroups = new Mongo.Collection('groups');
 
 if (Meteor.isServer) {
   var Fiber = Npm.require('fibers');
@@ -69,10 +70,34 @@ if (Meteor.isServer) {
         MessageData.update({_id: user._id}, {$inc: {counter: 1}}, {upsert: true});
       }else if(counter==2){
         MessageData.update({_id: user._id}, {$set: {zip: text}}, {upsert: true});
+        var zip = Zipcodes.lookup(parseInt(text));
+        if(StudyGroups.findOne({group: {subject: subject}})==undefined){
+          var group = {
+            subject: user.subject,
+            people: [from],
+            loc: [zip.longitude, zip.latitude]
+          }
+          StudyGroups.insert(group);
+        }else {
+          var thisGroup = StudyGroups.find({
+            loc: {
+              $geoWithin: {
+                $center: [loc, 0.02699784*2] //6000 meters
+              }
+            }
+          }).fetch()[0];
+          var arr = thisGroup.people.push(from);
+          StudyGroups.update({_id: thisGroup._id}, {$set{people: arr}});
+        }
         xml = '<Response><Sms>Thank you, we will now match you to a study group.</Sms></Response>';
+        MessageData.update({_id: user._id}, {$set: {counter: 0}}, {upsert: true});
       }
       res.type('text/xml');
       res.send(xml);
     }).run();
   }
+
+  Meteor.startup(function(){
+    StudyGroups._ensureIndex({loc: "2d"});
+  });
 }
