@@ -100,7 +100,7 @@ if (Meteor.isClient) {
 		'click #add' : function () {
 			if(!$('#noteInput').val().match(/^\s*$/)){
 				var note = {
-            name: Meteor.user().profile.username,
+            //name: Meteor.user().profile.username,
             room: window.location.pathname.slice(6),
 						text: $('#noteInput').val(),
             time: moment().format('MMMM Do, h:mm:ss a')
@@ -114,7 +114,7 @@ if (Meteor.isClient) {
 			if(event.which===13){
 				if(!$('#noteInput').val().match(/^\s*$/)){
 					var note = {
-            name: Meteor.user().profile.username,
+            //name: Meteor.user().profile.username,
             room: window.location.pathname.slice(6),
 						text: $('#noteInput').val(),
             time: moment().format('MMMM Do, h:mm:ss a')
