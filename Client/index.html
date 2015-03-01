@@ -126,7 +126,7 @@
 </template>
 
 <template name="group">
-  <div class="group_box">
+  <div id="{{id}}" class="group_box">
     <div class="col-md-3">
       <p>People</p>
     </div>
@@ -134,7 +134,7 @@
       {{name}}
     </div>
     <div class="col-md-3">
-      <button class="joinGroup">Join</button>
+      <button id="{{id}}" class="joinGroup">Join</button>
     </div>
   </div>
 </template>

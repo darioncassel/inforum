@@ -60,7 +60,9 @@ if (Meteor.isClient) {
     'click #addGroup': function () {
       var name = $('#groupName').val();
       var group = {
-        name: name
+        name: name,
+        id: generateUUID(),
+        people: [Meteor.user()._id]
       }
       Meteor.call('addgroup', group);
     },
@@ -71,6 +73,9 @@ if (Meteor.isClient) {
        query = regExp;
        console.log(query);
        _dep.changed();
+    },
+    'click .joinGroup': function(event) {
+      console.log(event.target.id);
     }
   });
 
@@ -148,5 +153,15 @@ if (Meteor.isClient) {
     // this is dumb implementation
     var parts = searchText.trim().split(' ');
     return new RegExp("(" + parts.join('|') + ")", "ig");
+  }
+
+  function generateUUID() {
+    var d = Date.now();
+    var uuid = 'xxxx-4xxx-yxxx'.replace(/[xy]/g,function(c) {
+        var r = (d + Math.random()*16)%16 | 0;
+        d = Math.floor(d/16);
+        return (c=='x' ? r : (r&0x7|0x8)).toString(16);
+    });
+    return uuid;
   }
 }

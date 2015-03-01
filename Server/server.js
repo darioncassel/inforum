@@ -81,6 +81,9 @@ if (Meteor.isServer) {
     },
     addgroup: function(group) {
       GroupsData.insert(group);
+    },
+    removeAllGroups: function() {
+      GroupsData.remove({});
     }
   });
 
