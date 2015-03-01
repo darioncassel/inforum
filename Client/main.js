@@ -4,10 +4,10 @@ Router.configure({
 
 Router.route('/', function(){this.render('main');});
 Router.route('/chat/:id', function() {
-  this.render('chat');
-  var id = this.params.id;
+  var id = ""+this.params.id;
   Meteor.call('joinChat', id);
-  Meteor.subscribe('room');
+  this.wait(Meteor.subscribe('room'));
+  this.render('chat');
 });
 
 NotesData = new Mongo.Collection("notes");
@@ -15,7 +15,6 @@ NotesData = new Mongo.Collection("notes");
 if (Meteor.isClient) {
   Template.chat.events({
 		'click #add' : function () {
-      console.log('here');
 			if(!$('#noteInput').val().match(/^\s*$/)){
 				var note = {
             room: window.location.pathname.slice(6),
@@ -28,10 +27,9 @@ if (Meteor.isClient) {
 		},
 		'keypress input' : function (event) {
 			if(event.which===13){
-        console.log('here');
 				if(!$('#noteInput').val().match(/^\s*$/)){
 					var note = {
-            room: window.location.pathname.slice(1),
+            room: window.location.pathname.slice(6),
 						text: $('#noteInput').val()
 					};
 					Meteor.call('addNote', note);
@@ -43,7 +41,7 @@ if (Meteor.isClient) {
 
 	Template.chat.helpers({
 		notes: function() {
-			return NotesData.find().fetch();
+			return NotesData.find({room: window.location.pathname.slice(6)}).fetch();
 		}
 	});
 

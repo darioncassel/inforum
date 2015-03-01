@@ -53,7 +53,7 @@ if (Meteor.isServer) {
     },
     'joinChat': function(id){
       Meteor.publish('room', function(){
-        return NotesData.find({room: id});
+        return NotesData.find();
       });
     },
     addNote: function(note) {
