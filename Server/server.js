@@ -100,7 +100,7 @@ if (Meteor.isServer) {
       }else if(counter==2){
         MessageData.update({_id: user._id}, {$set: {zip: text}}, {upsert: true});
         var geo = new GeoCoder();
-        var result = geo.geocode(parseInt(text));
+        var result = geo.geocode(text);
         var loc = [result[0].longitude, result[0].latitude];
         if(StudyGroups.findOne({subject: user.subject})==undefined){
           var group = {
