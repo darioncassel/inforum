@@ -90,6 +90,7 @@ if (Meteor.isServer) {
               }
             }
           }).fetch()[0];
+          //hello
           var arr = thisGroup.people.push(from);
           StudyGroups.update({_id: thisGroup._id}, {$set: {people: arr}});
         }
