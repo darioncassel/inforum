@@ -116,7 +116,7 @@ if (Meteor.isServer) {
           }
         }
         var uid = generateUUID();
-        xml = '<Response><Sms>Thank you, we have matched you to a group: https://52.0.162.200:3000/chat/'+uid+'/</Sms></Response>';
+        xml = '<Response><Sms>Thank you, we have matched you to a group: http://52.0.162.200:3000/chat/'+uid+'/</Sms></Response>';
         MessageData.update({_id: user._id}, {$set: {counter: 0}}, {upsert: true});
       }
       res.type('text/xml');
