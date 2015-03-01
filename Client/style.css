@@ -45,3 +45,67 @@
 #explanation > p {
 	color:gray;
 }
+
+#add {
+	color: #fff;
+	background-color: #95a5a6;
+  font-size: 15px;
+  margin-bottom: 4px;
+	height: 30px;
+	padding-top: 4px;
+}
+
+#noteInput {
+	width: 60%;
+	font-size: 1.2em;
+	line-height: 1.33;
+}
+
+#notesdata {
+	position: fixed !important;
+	position: absolute;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	margin-top: 44px;
+	padding-top: 20px;
+	margin-bottom: 33px;
+	padding-left: 25%;
+	padding-right: 25%;
+	min-width: 350px;
+	z-index: -10;
+	overflow-y: scroll;
+	float: left;
+}
+
+.note {
+	background-color: #fff;
+	border: 1px solid #eee;
+	border-radius: 5px;
+	box-shadow: 0 1px rgba(0,0,0,0.07);
+	margin-bottom: 1px;
+	padding-left: 20px;
+	padding-right: 10px;
+	padding-top: 12px;
+	padding-bottom: 3px;
+	word-wrap: break-word;
+	width: 100%;
+	float: right;
+}
+
+.noteText {
+	font-size:1.2em;
+	text-align:left;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background-color: #fff;
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 0px;
+}

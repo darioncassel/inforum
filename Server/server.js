@@ -1,5 +1,6 @@
 MessageData = new Mongo.Collection('messages');
 StudyGroups = new Mongo.Collection('groups');
+NotesData = new Mongo.Collection('notes_room');
 
 if (Meteor.isServer) {
   var Fiber = Npm.require('fibers');
@@ -49,6 +50,17 @@ if (Meteor.isServer) {
     },
     'viewGroupDB': function() {
       console.log(StudyGroups.find().fetch());
+    },
+    'joinChat': function(id){
+      Meteor.publish('room', function(){
+        return NotesData.find({room: id});
+      });
+    },
+    addNote: function(note) {
+      NotesData.insert(note);
+    },
+    removeAllNotes: function() {
+      NotesData.remove({});
     }
   });
 
@@ -103,7 +115,8 @@ if (Meteor.isServer) {
             StudyGroups.insert(group);
           }
         }
-        xml = '<Response><Sms>Thank you, we will now match you to a study group.</Sms></Response>';
+        var uid = generateUUID();
+        xml = '<Response><Sms>Thank you, we have matched you to a group: https://52.0.162.200:3000/chat/'+uid+'/</Sms></Response>';
         MessageData.update({_id: user._id}, {$set: {counter: 0}}, {upsert: true});
       }
       res.type('text/xml');
@@ -114,4 +127,14 @@ if (Meteor.isServer) {
   Meteor.startup(function(){
     StudyGroups._ensureIndex({loc: "2d"});
   });
+
+  function generateUUID() {
+    var d = Date.now();
+    var uuid = 'xxxx-4xxx-yxxx'.replace(/[xy]/g,function(c) {
+        var r = (d + Math.random()*16)%16 | 0;
+        d = Math.floor(d/16);
+        return (c=='x' ? r : (r&0x7|0x8)).toString(16);
+    });
+    return uuid;
+  }
 }

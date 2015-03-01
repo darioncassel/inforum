@@ -60,5 +60,21 @@
 </template>
 
 <template name="chat">
-  {{> chapp_form}}
+  <div class="row-fluid marketing">
+		<div class="span12" id="notesdata">
+			{{#each notes}}
+				{{> note}}
+			{{/each}}
+		</div>
+	</div>
+  <div class="footer">
+    <input type="text" maxlength="140" placeholder="type your note here" autofocus="autofocus" id="noteInput">
+      <a class="btn btn-large" href="#" id="add">Send</a>
+  </div>
+</template>
+
+<template name="note">
+	<div class="note">
+		<p><span class="noteText">      {{linkify text}}</span></p>
+	</div>
 </template>
