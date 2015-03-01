@@ -58,7 +58,7 @@ if (Meteor.isClient) {
       return GroupsData.find({people: Meteor.user()._id}).fetch();
     },
     'users': function() {
-      return Meteor.users.find().fetch();
+      return Meteor.users.find({$ne: {_id: Meteor.user()._id}}).fetch();
     }
   });
 
