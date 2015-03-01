@@ -72,9 +72,9 @@ if (Meteor.isServer) {
       var xml = '<Response><Sms>Test</Sms></Response>';
       var user = MessageData.findOne({from: from})
       var counter = user.counter;
+      var uuid = generateUUID();
       if(counter==0){
         if(text=="hello"){
-          //test
           xml = '<Response><Sms>What would you like to study?</Sms></Response>';
           MessageData.update({_id: user._id}, {$inc: {counter: 1}}, {upsert: true});
         }else {
@@ -92,7 +92,8 @@ if (Meteor.isServer) {
           var group = {
             subject: user.subject,
             people: [from],
-            loc: loc
+            loc: loc,
+            uuid: uuid
           }
           StudyGroups.insert(group);
         }else {
@@ -105,18 +106,19 @@ if (Meteor.isServer) {
           }).fetch()[0];
           if(thisGroup!=undefined){
             var arr = thisGroup.people.push(from);
+            uuid = thisGroup.uuid;
             StudyGroups.update({_id: thisGroup._id}, {$set: {people: arr}});
           }else{
             var group = {
               subject: user.subject,
               people: [from],
-              loc: loc
+              loc: loc,
+              uuid: uuid
             }
             StudyGroups.insert(group);
           }
         }
-        var uid = generateUUID();
-        xml = '<Response><Sms>Thank you, we have matched you to a group: http://52.0.162.200:3000/chat/'+uid+'/</Sms></Response>';
+        xml = '<Response><Sms>Thank you, we have matched you to a group: http://52.0.162.200:3000/chat/'+uuid+'/</Sms></Response>';
         MessageData.update({_id: user._id}, {$set: {counter: 0}}, {upsert: true});
       }
       res.type('text/xml');
