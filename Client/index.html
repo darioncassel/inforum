@@ -114,6 +114,7 @@
 			<div class="col-md-3">
 				  <input type="text" id="groupName" placeholder="add group">
 				  <button id="addGroup">+</button>
+          <p id="myGroups">My Groups</p>
 			</div>
 		</div>
 	</div>
@@ -126,7 +127,14 @@
 
 <template name="group">
   <div class="group_box">
-    {{name}}
-    <button>Join</button>
+    <div class="col-md-3">
+      <p>People</p>
+    </div>
+    <div class="col-md-6">
+      {{name}}
+    </div>
+    <div class="col-md-3">
+      <button class="joinGroup">Join</button>
+    </div>
   </div>
 </template>
