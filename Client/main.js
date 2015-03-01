@@ -87,6 +87,9 @@ if (Meteor.isClient) {
   Template.chat.rendered = function() {
     bootbox.prompt("What is your name?", function(result) {
       var id = Meteor.user()._id;
+      if(id==undefined){
+        Meteor.call('viewUserDB');
+      }
       Meteor.call('modifyUser', id, result);
     });
   }
