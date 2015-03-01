@@ -98,6 +98,25 @@
 
 <template name="groups">
   <div class="groups_main">
+    <div class="groups_header">
+      <img id="profile_pic" src="{{link}}">
+      <p id="profile_name">{{> loginButtons}}</p>
+      <h2>inforum</h2>
+      <p id="profile_friends">Online</p>
+      <input type="text" id="groupName" placeholder="add group">
+      <button id="addGroup">+</button>
+    </div>
+    <input id="groupSearch" placeholder="Search">
+    <div class="groupsList">
+      {{#each groups}}
+        {{> group}}
+      {{/each}}
+    </div>
+  </div>
+</template>
 
+<template name="group">
+  <div class="group_box">
+    {{name}}
   </div>
 </template>
