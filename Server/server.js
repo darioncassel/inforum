@@ -84,6 +84,14 @@ if (Meteor.isServer) {
     },
     removeAllGroups: function() {
       GroupsData.remove({});
+    },
+    joinGroup: function(userid, id) {
+      var obj = GroupsData.findOne({id: id});
+      var arr = obj.people;
+      if(!_.contains(arr, userid)){
+        arr.push(userid);
+      }
+      GroupsData.update({id: id}, {$set: {people: arr}});
     }
   });
 

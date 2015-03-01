@@ -75,7 +75,8 @@ if (Meteor.isClient) {
        _dep.changed();
     },
     'click .joinGroup': function(event) {
-      console.log(event.target.id);
+      var id = event.target.id;
+      Meteor.call('joinGroup', Meteor.user()._id, id);
     }
   });
 
