@@ -86,7 +86,7 @@ if (Meteor.isClient) {
 
   Template.chat.rendered = function() {
     bootbox.prompt("What is your name?", function(result) {
-      //var id = Meteor.user()._id;
+      var id = Meteor.user()._id;
       //Session.set('username', result);
     });
   }
