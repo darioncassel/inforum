@@ -174,13 +174,14 @@
   top: 0;
   right: 0;
   font-size: 1em;
+	padding:2em;
   font-family: "open sans", sans-serif;
 }
 #profile_friends {
   position: absolute;
   margin-top: 40px;
   margin-left: 20px;
-  top: 0;
+  top: 40px;
   left: 0;
 }
 #groupName {
@@ -199,7 +200,7 @@
 }
 #groupSearch {
   font-size: 1.5em;
-  margin-top: 0px;
+  margin-top: 90px;
   width: 70%;
   text-align: center;
 }

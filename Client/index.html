@@ -97,22 +97,30 @@
 </template>
 
 <template name="groups">
-  <div class="groups_main">
-    <div class="groups_header">
-      <img id="profile_pic" src="{{link}}">
-      <p id="profile_name">{{> loginButtons}}</p>
-      <h2>inforum</h2>
-      <p id="profile_friends">Online</p>
-      <input type="text" id="groupName" placeholder="add group">
-      <button id="addGroup">+</button>
-    </div>
-    <input id="groupSearch" placeholder="Search">
+	<div class="header">
+		<h1>in<span style="color:#3498db">forum</span></h1>
+    <img id="profile_pic" src="{{link}}">
+    <p id="profile_name">Welcome, {{> loginButtons}}</p>
+  </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+      		<p id="profile_friends">Friends Online</p>
+			</div>
+			<div class="col-md-6">
+    			<input id="groupSearch" placeholder="Enter subject here">
+			</div>
+			<div class="col-md-3">
+				  <input type="text" id="groupName" placeholder="add group">
+				  <button id="addGroup">+</button>
+			</div>
+		</div>
+	</div>
     <div class="groupsList">
       {{#each groups}}
         {{> group}}
       {{/each}}
     </div>
-  </div>
 </template>
 
 <template name="group">
