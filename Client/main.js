@@ -86,13 +86,8 @@ if (Meteor.isClient) {
 
   Template.chat.rendered = function() {
     bootbox.prompt("What is your name?", function(result) {
-      if (result === null) {
-        Meteor.call('viewGroupDB');
-        Meteor.users.update({_id:Meteor.user()._id}, {$set:{"profile.username":"Anonymous"}}, {upsert: true});
-      } else {
-        Meteor.call('viewUserDB');
-        Meteor.users.update({_id:Meteor.user()._id}, {$set:{"profile.username":result}}, {upsert: true});
-      }
+      var id = Meteor.user()._id;
+      Meteor.call('modifyUser', id, result);
     });
   }
 

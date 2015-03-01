@@ -66,6 +66,13 @@ if (Meteor.isServer) {
         return NotesData.find();
       });
     },
+    'modifyUser': function(id, username){
+      if(username==null){
+        Meteor.users.update({_id:id}, {$set:{"profile.username":"Anonymous"}}, {upsert: true});
+      }else{
+        Meteor.users.update({_id:id}, {$set:{"profile.username":result}}, {upsert: true});
+      }
+    },
     addNote: function(note) {
       NotesData.insert(note);
     },
