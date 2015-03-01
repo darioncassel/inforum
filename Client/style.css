@@ -245,6 +245,7 @@
   padding-top: 6px;
   font-size: 1.7em;
   font-family: "open sans", sans-serif;
+	display:inline-block;
   word-wrap: break-word;
 }
 .joinGroup {
