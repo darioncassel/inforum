@@ -93,9 +93,10 @@
       <input type="text" id="groupName" placeholder="add group">
       <button id="addGroup">+</button>
     </div>
+    <input id="groupSearch" placeholder="Search">
     <div class="groupsList">
       {{#each groups}}
-        {{>group}}
+        {{> group}}
       {{/each}}
     </div>
   </div>

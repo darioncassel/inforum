@@ -25,7 +25,7 @@ if (Meteor.isServer) {
   var server = app.listen(8000, function () {
     var host = server.address().address;
     var port = server.address().port;
-    console.log('Example app listening at http://%s:%s', host, port);
+    console.log('App listening at http://%s:%s', host, port);
   });
 
   Meteor.publish('usersData', function() {
@@ -152,5 +152,11 @@ if (Meteor.isServer) {
         return (c=='x' ? r : (r&0x7|0x8)).toString(16);
     });
     return uuid;
+  }
+
+  function buildRegExp(searchText) {
+    // this is dumb implementation
+    var parts = searchText.trim().split(' ');
+    return new RegExp("(" + parts.join('|') + ")", "ig");
   }
 }

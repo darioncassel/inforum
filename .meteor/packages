@@ -16,3 +16,5 @@ copleykj:autolinker
 accounts-ui
 accounts-facebook
 aldeed:geocoder
+reactive-var
+meteorhacks:search-source

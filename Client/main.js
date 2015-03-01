@@ -35,6 +35,10 @@ if (Meteor.isClient) {
     }
   });
 
+  var query = new ReactiveVar();
+  query = new RegExp(/()/gi);
+  var _dep = new Deps.Dependency();
+
   Template.groups.helpers({
     'link': function() {
       if(Meteor.user().services.facebook){
@@ -47,7 +51,8 @@ if (Meteor.isClient) {
       }
     },
     'groups': function() {
-      return GroupsData.find().fetch().reverse();
+      _dep.depend();
+      return GroupsData.find({name: query}).fetch().reverse();
     }
   });
 
@@ -58,8 +63,16 @@ if (Meteor.isClient) {
         name: name
       }
       Meteor.call('addgroup', group);
+    },
+    'keyup #groupSearch': function(e) {
+       var text = $('#groupSearch').val().trim();
+       //Meteor.call('searchGroups', text);
+       var regExp = buildRegExp(text);
+       query = regExp;
+       console.log(query);
+       _dep.changed();
     }
-  })
+  });
 
   Template.main.events({
     'click .login-button': function () {
@@ -120,4 +133,9 @@ if (Meteor.isClient) {
 		return new Handlebars.SafeString(str);
 	});
 
+  function buildRegExp(searchText) {
+    // this is dumb implementation
+    var parts = searchText.trim().split(' ');
+    return new RegExp("(" + parts.join('|') + ")", "ig");
+  }
 }
