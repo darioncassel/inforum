@@ -60,13 +60,12 @@ if (Meteor.isServer) {
       var xml = '<Response><Sms>Test</Sms></Response>';
       var user = MessageData.findOne({from: from})
       var counter = user.counter;
-      console.log(counter);
       if(counter==0){
         if(text=="hello"){
           xml = '<Response><Sms>What would you like to study?</Sms></Response>';
           MessageData.update({_id: user._id}, {$inc: {counter: 1}}, {upsert: true});
         }else {
-          xml = '<Response><Sms>What?</Sms></Response>';
+          xml = "<Response><Sms>Send 'Hello' to begin.</Sms></Response>";
         }
       }else if(counter==1){
         MessageData.update({_id: user._id}, {$set: {subject: text}}, {upsert: true});
