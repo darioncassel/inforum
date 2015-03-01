@@ -2,9 +2,8 @@
   text-align: center;
 	font-size:1em;
 	color:#2c3e50;
-  font-family:'Rockwell', bold, cursive;
+  font-family: 'open sans', sans-serif;
 	background: white;
-
 }
 
 .container{
@@ -24,9 +23,10 @@
 
 #userPrompt {
 	text-align: center;
+  font-weight: bold;
 	font-size: 1.75em;
 	color:#2c3e50;
-	font-family:'Rockwell', cursive;
+  font-family: "open sans", sans-serif;
 }
 
 #explanation {
@@ -37,7 +37,7 @@
 	font-size: 1.2em;
 	color:#2c3e50;
 	background:#ecf0f1;
-	font-family:'Rockwell', cursive;
+  font-family: "open sans", sans-serif;
 	border-radius:3%;
 	height:30%;
 }
@@ -97,6 +97,15 @@
 .noteText {
 	font-size:1.2em;
 	text-align:left;
+}
+
+.noteLabel {
+	height: 30px;
+	float: left;
+	margin-top: 0px;
+	margin-left: -60px;
+	border-radius: 20px;
+	margin-bottom: 1%;
 }
 
 .footer {

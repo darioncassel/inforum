@@ -20,6 +20,7 @@
 </template>
 
 <template name="main">
+  {{> loginButtons}}
 	<div class = "container">
 		<div class="jumbotron">
 		  <h2 style = "font-size:5em">in<span style = color:#3498db>forum</span></h2>
@@ -75,6 +76,15 @@
 
 <template name="note">
 	<div class="note">
+    <div class="noteLabel">
+      <span>name</span>
+    </div>
 		<p><span class="noteText">      {{linkify text}}</span></p>
 	</div>
+</template>
+
+<template name="groups">
+  <div class="groups_main">
+
+  </div>
 </template>

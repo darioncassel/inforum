@@ -3,6 +3,13 @@ Router.configure({
 });
 
 Router.route('/', function(){this.render('main');});
+Router.route('/groups', function(){
+  if(Meteor.user()){
+    this.render('groups');
+  }else{
+    this.next();
+  }
+});
 Router.route('/chat/:id', function() {
   var id = ""+this.params.id;
   Meteor.call('joinChat', id);
@@ -13,6 +20,16 @@ Router.route('/chat/:id', function() {
 NotesData = new Mongo.Collection("notes");
 
 if (Meteor.isClient) {
+  Template.main.events({
+    'click .login-button': function () {
+      Meteor.setTimeout(function() {
+        if(Meteor.user()){
+          console.log('here');
+          window.location="groups";
+        }
+      }, 2000);
+    }
+  });
   Template.chat.events({
 		'click #add' : function () {
 			if(!$('#noteInput').val().match(/^\s*$/)){
