@@ -56,6 +56,9 @@ if (Meteor.isClient) {
     },
     'mygroups': function() {
       return GroupsData.find({people: Meteor.user()._id}).fetch();
+    },
+    'users': function() {
+      return Meteor.users.find().fetch();
     }
   });
 

@@ -107,6 +107,11 @@
 		<div class="row">
 			<div class="col-md-3">
       		<p id="profile_friends">Friends Online</p>
+          <div id="onlineFriends">
+            {{#each users}}
+              {{> userhead}}
+            {{/each}}
+          </div>
 			</div>
 			<div class="col-md-6">
     			<input id="groupSearch" placeholder="Enter subject here">
@@ -148,4 +153,8 @@
   <div class="mygroup_box">
     <a href="http://52.0.162.200:3000/chat/{{id}}/">{{name}}</a>
   </div>
+</template>
+
+<template name="userhead">
+  <img class="userhead" src="http://graph.facebook.com/{{services.facebook.id}}/picture/?type=large">
 </template>

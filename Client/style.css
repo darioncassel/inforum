@@ -280,3 +280,22 @@
   padding-top: 6px;
   font-size: .6em;
 }
+#myGroups_List{
+  position: absolute;
+  margin-top: 170px;
+  margin-right: 30px;
+  top: 0;
+  right: 0;
+}
+#onlineFriends {
+  position: absolute;
+  margin-top: 120px;
+  margin-left: 30px;
+  top: 0;
+  left: 0;
+}
+.userhead {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
