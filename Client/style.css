@@ -173,8 +173,8 @@
 }
 #profile_name {
   position: absolute;
-  margin-top: 25px;
-  margin-right: 60px;
+  margin-top: 0px;
+  margin-right: 40px;
   top: 0;
   right: 0;
   font-size: 1em;
@@ -205,6 +205,7 @@
 #groupSearch {
   font-size: 1.5em;
   margin-top: 90px;
+  margin-bottom: 10px;
   width: 70%;
   text-align: center;
 }
@@ -215,7 +216,7 @@
 	right:0;
 	bottom:0;
 	left:0;
-	margin-top: 104px;
+	margin-top: 124px;
 	padding-top: 20px;
 	margin-bottom: 23px;
 	padding-left: 20%;
