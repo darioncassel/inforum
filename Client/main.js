@@ -85,10 +85,16 @@ if (Meteor.isClient) {
   });
 
   Template.chat.rendered = function() {
+    AntiModals.prompt("Hello?", function(e, t){
+      var id = Meteor.user()._id;
+      Session.set('username', t.value);
+    });
+    /*
     bootbox.prompt("What is your name?", function(result) {
       var id = Meteor.user()._id;
       Session.set('username', result);
     });
+    */
   }
 
   Template.chat.events({
