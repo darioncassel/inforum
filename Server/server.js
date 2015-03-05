@@ -116,32 +116,13 @@ if (Meteor.isServer) {
         xml = '<Response><Sms>What is your zipcode?</Sms></Response>';
         MessageData.update({_id: user._id}, {$inc: {counter: 1}}, {upsert: true});
       }else if(counter==2){
-        MessageData.update({_id: user._id}, {$set: {zip: text}}, {upsert: true});
-        var geo = new GeoCoder();
-        var result = geo.geocode(text);
-        var loc = [result[0].longitude, result[0].latitude];
-        if(StudyGroups.findOne({subject: user.subject})==undefined){
-          var group = {
-            subject: user.subject,
-            people: [from],
-            loc: loc,
-            uuid: uuid
-          }
-          StudyGroups.insert(group);
-        }else {
-          var thisGroup = StudyGroups.find({
-            loc: {
-              $geoWithin: {
-                $center: [loc, 0.02699784*2] //6000 meters
-              }
-            }
-          }).fetch()[0];
-          if(thisGroup!=undefined){
-            var arr = thisGroup.people;
-            arr.push(from);
-            uuid = thisGroup.uuid;
-            StudyGroups.update({_id: thisGroup._id}, {$set: {people: arr}});
-          }else{
+        var zipReg = new RegExp("d[5]");
+        if (zipReg.test(text)){
+          MessageData.update({_id: user._id}, {$set: {zip: text}}, {upsert: true});
+          var geo = new GeoCoder();
+          var result = geo.geocode(text);
+          var loc = [result[0].longitude, result[0].latitude];
+          if(StudyGroups.findOne({subject: user.subject})==undefined){
             var group = {
               subject: user.subject,
               people: [from],
@@ -149,10 +130,35 @@ if (Meteor.isServer) {
               uuid: uuid
             }
             StudyGroups.insert(group);
+          }else {
+            var thisGroup = StudyGroups.find({
+              loc: {
+                $geoWithin: {
+                  $center: [loc, 0.02699784*2] //6000 meters
+                }
+              }
+            }).fetch()[0];
+            if(thisGroup!=undefined){
+              var arr = thisGroup.people;
+              arr.push(from);
+              uuid = thisGroup.uuid;
+              StudyGroups.update({_id: thisGroup._id}, {$set: {people: arr}});
+            }else{
+              var group = {
+                subject: user.subject,
+                people: [from],
+                loc: loc,
+                uuid: uuid
+              }
+              StudyGroups.insert(group);
+            }
           }
+          xml = '<Response><Sms>Thank you, we have matched you to a group: http://inforum.me/chat/'+uuid+'/</Sms></Response>';
+          MessageData.update({_id: user._id}, {$set: {counter: 0}}, {upsert: true});
         }
-        xml = '<Response><Sms>Thank you, we have matched you to a group: http://inforum.me/chat/'+uuid+'/</Sms></Response>';
-        MessageData.update({_id: user._id}, {$set: {counter: 0}}, {upsert: true});
+        else{
+          xml = "<Response><Sms>Could not recognize zipcode. Please re-enter it.</Sms></Response>";
+        }
       }
       res.type('text/xml');
       res.send(xml);
