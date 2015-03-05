@@ -102,6 +102,9 @@ if (Meteor.isServer) {
     removeAllGroups: function() {
       GroupsData.remove({});
     },
+    clearUserDB: function() {
+      Meteor.users.remove({});
+    },
     joinGroup: function(userid, id) {
       var obj = GroupsData.findOne({id: id});
       var arr = obj.people;
