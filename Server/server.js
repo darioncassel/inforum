@@ -152,7 +152,7 @@ if (Meteor.isServer) {
             var thisGroup = StudyGroups.find({
               loc: {
                 $geoWithin: {
-                  $center: [loc, 0.02699784*20] //6000 meters
+                  $center: [loc, 0.02699784*5.365] //3000 * 5.365 meters =  10 miles
                 }
               }
             }).fetch()[0];
