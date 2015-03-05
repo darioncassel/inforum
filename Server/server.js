@@ -138,8 +138,8 @@ if (Meteor.isServer) {
               subject: user.subject,
               people: [from],
               loc: loc,
-              uuid: uuid
-              time: moment().format("X");
+              uuid: uuid,
+              time: moment().format("X")
             }
             StudyGroups.insert(group);
           }else {
@@ -160,8 +160,8 @@ if (Meteor.isServer) {
                 subject: user.subject,
                 people: [from],
                 loc: loc,
-                uuid: uuid
-                time: moment().format("X");
+                uuid: uuid,
+                time: moment().format("X")
               }
               StudyGroups.insert(group);
             }
