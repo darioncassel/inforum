@@ -157,7 +157,7 @@ if (Meteor.isServer) {
           MessageData.update({_id: user._id}, {$set: {counter: 0}}, {upsert: true});
         }
         else{
-          xml = "<Response><Sms>Could not recognize zipcode. Please re-enter it.</Sms></Response>";
+          xml = "<Response><Sms>Please enter a valid 5-digit zipcode.</Sms></Response>";
         }
       }
       res.type('text/xml');
