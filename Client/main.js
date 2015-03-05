@@ -110,6 +110,7 @@ if (Meteor.isClient) {
             room: window.location.pathname.slice(6),
 						text: $('#noteInput').val(),
             time: moment().format('MMMM Do, h:mm:ss a')
+						timestamp: moment().format('X');
 				};
 				Meteor.call('addNote', note);
 			}
@@ -124,6 +125,7 @@ if (Meteor.isClient) {
             room: window.location.pathname.slice(6),
 						text: $('#noteInput').val(),
             time: moment().format('MMMM Do, h:mm:ss a')
+						timestamp: moment().format('X');
 					};
 					Meteor.call('addNote', note);
 				}

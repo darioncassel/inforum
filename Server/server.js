@@ -24,14 +24,25 @@ if (Meteor.isServer) {
 
   //Clear old study groups
   Meteor.setInterval( function(){
-      var curTime = moment().format("X");
+      var curTime = moment().format('X');
       var tempArr = StudyGroups.find().fetch();
       for (var i=0; i<tempArr.length; i++){
-        if (curTime - tempArr[i].time > 30){ //30 SEconds, later change to 1 hour
+        if (curTime - tempArr[i].time > 3600){
           StudyGroups.remove(tempArr[i]._id);
         }
       }
-  }, 1000/**60*10*/);
+  }, 600000); //Check every 10 minutes
+
+  //Clear old chat data / rooms
+  Meteor.setInterval( function(){
+      var curTime = moment().format('X');
+      var tempArr = NotesData.find().fetch();
+      for (var i=0; i<tempArr.length; i++){
+        if (curTime - tempArr[i].timestamp > 10){ //Change to 3600
+          NotesData.remove(tempArr[i]._id);
+        }
+      }
+  }, 3000); //Check every 300000 miliseconds
 
   var server = app.listen(8000, function () {
     var host = server.address().address;
