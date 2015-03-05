@@ -109,8 +109,8 @@ if (Meteor.isClient) {
             name: Session.get('username'),
             room: window.location.pathname.slice(6),
 						text: $('#noteInput').val(),
-            time: moment().format('MMMM Do, h:mm:ss a')
-						timestamp: moment().format('X');
+            time: moment().format('MMMM Do, h:mm:ss a'),
+						timestamp: moment().format('X')
 				};
 				Meteor.call('addNote', note);
 			}
@@ -124,8 +124,8 @@ if (Meteor.isClient) {
             name: Session.get('username'),
             room: window.location.pathname.slice(6),
 						text: $('#noteInput').val(),
-            time: moment().format('MMMM Do, h:mm:ss a')
-						timestamp: moment().format('X');
+            time: moment().format('MMMM Do, h:mm:ss a'),
+						timestamp: moment().format('X')
 					};
 					Meteor.call('addNote', note);
 				}
