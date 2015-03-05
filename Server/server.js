@@ -116,7 +116,7 @@ if (Meteor.isServer) {
         xml = '<Response><Sms>What is your zipcode?</Sms></Response>';
         MessageData.update({_id: user._id}, {$inc: {counter: 1}}, {upsert: true});
       }else if(counter==2){
-        var zipReg = new RegExp("\d[5]");
+        var zipReg = new RegExp(\d{5});
         if (zipReg.test(text)){
           MessageData.update({_id: user._id}, {$set: {zip: text}}, {upsert: true});
           var geo = new GeoCoder();
