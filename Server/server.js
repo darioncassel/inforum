@@ -22,6 +22,17 @@ if (Meteor.isServer) {
     flow(from, text, res);
   });
 
+  //Clear old study groups
+  Meteor.setInterval( function(){
+      var curTime = moment().format("X");
+      var tempArr = StudyGroups.find().fetch();
+      for (int i=0; i<tempArr.length; i++){
+        if (curTime - tempArr[i].time > 30){ //30 SEconds, later change to 1 hour
+          StudyGroups.remove(tempArr[i]._id);
+        }
+      }
+  }, 1000/**60*10*/);
+
   var server = app.listen(8000, function () {
     var host = server.address().address;
     var port = server.address().port;
@@ -128,6 +139,7 @@ if (Meteor.isServer) {
               people: [from],
               loc: loc,
               uuid: uuid
+              time: moment().format("X");
             }
             StudyGroups.insert(group);
           }else {
@@ -149,6 +161,7 @@ if (Meteor.isServer) {
                 people: [from],
                 loc: loc,
                 uuid: uuid
+                time: moment().format("X");
               }
               StudyGroups.insert(group);
             }
