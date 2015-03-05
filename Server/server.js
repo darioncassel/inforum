@@ -26,7 +26,7 @@ if (Meteor.isServer) {
   Meteor.setInterval( function(){
       var curTime = moment().format("X");
       var tempArr = StudyGroups.find().fetch();
-      for (int i=0; i<tempArr.length; i++){
+      for (var i=0; i<tempArr.length; i++){
         if (curTime - tempArr[i].time > 30){ //30 SEconds, later change to 1 hour
           StudyGroups.remove(tempArr[i]._id);
         }
