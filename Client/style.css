@@ -1,3 +1,4 @@
+/*Splash page*/
 .jumbotron {
   text-align: center;
 	font-size:1em;
@@ -46,6 +47,7 @@
 	color:gray;
 }
 
+/*chat room*/
 #add {
 	color: #fff;
 	background-color: #95a5a6;
@@ -158,6 +160,7 @@
 
 }
 
+/*Facebook study groups section*/
 .groups_header {
   box-shadow: 0 1px rgba(0,0,0,0.07);
 }
